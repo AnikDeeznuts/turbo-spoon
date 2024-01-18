@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TurboSpoon Game</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+
+        #spoon {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: #3498db;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        #score {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            color: #2ecc71;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="spoon"></div>
+    <div id="score">Score: 0</div>
+
+    <script>
+        const spoon = document.getElementById('spoon');
+        const scoreDisplay = document.getElementById('score');
+        let score = 0;
+
+        spoon.addEventListener('mouseover', () => {
+            moveSpoon();
+            increaseScore();
+        });
+
+        function moveSpoon() {
+            const maxX = window.innerWidth - spoon.clientWidth;
+            const maxY = window.innerHeight - spoon.clientHeight;
+
+            const newX = Math.random() * maxX;
+            const newY = Math.random() * maxY;
+
+            spoon.style.left = `${newX}px`;
+            spoon.style.top = `${newY}px`;
+        }
+
+        function increaseScore() {
+            score++;
+            scoreDisplay.textContent = `Score: ${score}`;
+        }
+    </script>
+
+</body>
+  </html>
+
